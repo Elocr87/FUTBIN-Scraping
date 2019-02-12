@@ -2,7 +2,7 @@ library(rvest) #scrapping
 library(stringr) #str_match_all
 
 
-setwd("C:\\Users\\Elo\\Documents\\")
+setwd("C:\\Users\\XXX\\Documents\\")
 
 FUT_2=data.frame() #create empty data frame
 
