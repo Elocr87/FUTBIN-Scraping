@@ -90,7 +90,7 @@ for (n in 1:pages){
   matched <- as.data.frame(str_match_all(html, "<a href=\"(.*?)\""))
   futbin_links=data.frame("1")
   
-  for (n_1 in seq(from=86, to=202, by=4)){
+  for (n_1 in seq(from=88, to=204, by=4)){
     #n=97
     ##print(matched[n,1])
     
@@ -196,17 +196,18 @@ for (n in 1:nrow(FUT)){
 FUT=FUT[!(FUT$Name=='Quincy Promes'&FUT$PRICE==0),] #Removing one Record
 
 #ADDING SBC PRICES
+
 FUT[FUT$Name=='Eden Hazard'&FUT$VER=="PL POTM",][7]=0.68025
 FUT[FUT$Name=='Kevin De Bruyne'&FUT$VER=="FUTmas SBC",][7]=0.569
 FUT[FUT$Name=='Toni Kroos'&FUT$VER=="CL TOTT SBC",][7]=0.1151
 FUT[FUT$Name=='Isco'&FUT$VER=="FUTmas SBC",][7]=0.1053
 FUT[FUT$Name=='Dani Alves'&FUT$VER=="Flashback SBC",][7]=0.25815
 FUT[FUT$Name=='Lorenzo Insigne'&FUT$VER=="CL TOTT SBC",][7]=0.3874
-FUT[FUT$Name=='Marco Reus'&FUT$RAT==90&FUT$VER=="Bundes POTM",][7]=0.8654
+FUT[FUT$Name=='Marco Reus'&FUT$RAT==93&FUT$VER=="Bundes POTM",][7]=0.8654
 FUT[FUT$Name=='Coutinho'&FUT$VER=="FUTmas SBC",][7]=0.14065
 FUT[FUT$Name=='Thiago Silva'&FUT$VER=="FUTmas SBC",][7]=0.12485
 FUT[FUT$Name=='Aubameyang'&FUT$VER=="PL POTM",][7]=0.54275
-FUT[FUT$Name=='Marco Reus'&FUT$RAT==88&FUT$VER=="Bundes POTM",][7]=0.36955
+FUT[FUT$Name=='Marco Reus'&FUT$RAT==91&FUT$VER=="Bundes POTM",][7]=0.36955
 FUT[FUT$Name=='Daniel Sturridge'&FUT$VER=="Flashback SBC",][7]=0.1757
 FUT[FUT$Name=='Alexandre Pato'&FUT$VER=="Flashback SBC",][7]=0.15795
 FUT[FUT$Name=='Raheem Sterling'&FUT$VER=="PL POTM",][7]=0.22645
@@ -249,10 +250,11 @@ FUT[FUT$Name=='Casillas'&FUT$VER=='Flashback SBC',][7]=0.07305
 FUT[FUT$Name=='Carlos Tévez'&FUT$VER=='Flashback SBC',][7]=0.1411
 FUT[FUT$Name=='Virgil van Dijk'&FUT$VER=="PL POTM",][7]=0.5825
 FUT[FUT$Name=='Šime Vrsaljko'&FUT$VER=='TOTY Nominee SBC',][7]=0.6435
-FUT[FUT$Name=='Marco Reus'&FUT$RAT==91&FUT$VER=="Bundes POTM",][7]=0.905
+FUT[FUT$Name=='Marco Reus'&FUT$RAT==94&FUT$VER=="Bundes POTM",][7]=0.905
 FUT[FUT$Name=='Frenkie de Jong'&FUT$RAT==90,][7]=0.153
 FUT[FUT$Name=='Wayne Rooney'&FUT$VER=="Flashback SBC",][7]=0.309
 FUT[FUT$Name=='Casemiro'&FUT$VER=="SBC",][7]=0.26
+FUT[FUT$Name=='Samuel Umtiti'&FUT$VER=="SBC",][7]=0.26
 FUT[FUT$Name=='Iago Aspas'&FUT$VER=="SBC",][7]=0.26
 FUT[FUT$Name=='Klaas-Jan Huntelaar'&FUT$VER=="Flashback SBC",][7]=0.1094
 FUT[FUT$Name=='Fernando Torres'&FUT$VER=="Flashback SBC",][7]=0.274
@@ -263,7 +265,8 @@ FUT[FUT$Name=='Marko Arnautovic'&FUT$VER=='Headliners SBC',][7]=0.168
 FUT[FUT$Name=='Leighton Baines'&FUT$VER=="Flashback SBC",][7]=0.149
 FUT[FUT$Name=='Marcus Rashford'&FUT$VER=="PL POTM",][7]=0.483
 FUT[FUT$Name=='Serge Gnabry'&FUT$VER=="SBC",][7]=0.168
-FUT[FUT$Name=='Tanguy Ndombele'&FUT$VER=="Weekly Obj- FS",][7]=0.342
+FUT[FUT$Name=='Tanguy Ndombele'&FUT$VER=="Weekly Obj- FS",][6]='FUT Future Stars'
+FUT[FUT$Name=='Tanguy Ndombele'&FUT$VER=='FUT Future Stars',][7]=0.342
 FUT[FUT$Name=='Abdoulaye Doucouré'&FUT$VER=="SBC",][7]=0.293
 FUT[FUT$Name=='Jamie Vardy'&FUT$VER=="SBC",][7]=0.293
 FUT[FUT$Name=='Ahmed Musa'&FUT$VER=="SBC",][7]=0.112
@@ -273,6 +276,23 @@ FUT[FUT$Name=='Allan Saint-Maximin'&FUT$VER=="",][6]='FUT Future Stars'
 FUT[FUT$Name=='Allan Saint-Maximin'&FUT$VER=='FUT Future Stars',][7]=0.143
 FUT[FUT$Name=='Alphonso Davies'&FUT$VER=="",][6]='FUT Future Stars'
 FUT[FUT$Name=='Alphonso Davies'&FUT$VER=='FUT Future Stars',][7]=0.210
+FUT[FUT$Name=='Marco Reus'&FUT$RAT==93&FUT$VER=="Bundes POTM",][7]=0.865
+FUT[FUT$Name=='Marco Reus'&FUT$RAT==94&FUT$VER=="Bundes POTM",][7]=0.872
+FUT[FUT$Name=='Leon Goretzka'&FUT$VER=="Bundes POTM",][7]=0.486
+FUT[FUT$Name=='Petr Cech'&FUT$VER=='Premium SBC',][7]=0.106
+FUT[FUT$Name=='Dimitri Payet'&FUT$VER=="Flashback SBC",][7]=0.263
+FUT[FUT$Name=='David Luiz'&FUT$VER=="Flashback SBC",][7]=0.340
+FUT[FUT$Name=='Falcao'&FUT$VER=="Europa SBC",][7]=0.055
+FUT[FUT$Name=='Tim Howard'&FUT$VER=="Premium SBC",][7]=0.042
+FUT[FUT$Name=='Kostas Manolas'&FUT$VER=="CL SBC",][7]=0.127
+FUT[FUT$Name=='Joe Gomez'&FUT$VER=="SBC - Future Stars",][7]=0.544
+FUT[FUT$Name=='David Villa'&FUT$VER=="Flashback SBC",][7]=0.184
+FUT[FUT$Name=='Daniele De Rossi'&FUT$VER=="Flashback SBC",][7]=0.249
+FUT[FUT$Name=='Vincent Kompany'&FUT$VER=="Flashback SBC",][7]=0.269
+FUT[FUT$Name=='Arturo Vidal'&FUT$VER=="Flashback SBC",][7]=0.343
+FUT[FUT$Name=='Sergio Agüero'&FUT$VER=="PL POTM",][7]=1.41
+FUT[FUT$Name=='Timo Werner'&FUT$VER=="FUT Birthday SBC",][7]=0.445
+FUT[FUT$Name=='Julian Brandt'&FUT$VER=="Bundes POTM",][7]=0.125
 
 
 FUT[,7]=gsub("\\.", ",", FUT[,7])
