@@ -10,7 +10,7 @@ setwd("C:\\Users\\XXX\\Documents\\") #Set your working Directory
 
 FUT_2=data.frame() #create empty data frame
 
-pages=2 #Number of pages in https://www.futbin.com/21/players
+pages=597 #Number of pages in https://www.futbin.com/21/players
 
 for (n in 1:pages){ 
   
@@ -101,6 +101,8 @@ for (n in 1:pages){
 
 FUT=FUT_2 #new D.F. 
 
+rm(FUT_2) #Remove DF
+
 #Change colunms names
 colnames(FUT)=c("CARD", "RARE-NON" ,"Name","RAT","POS","VER","PRICE","SKILL","WF","WR_AT","WR_DEF","PAC","SHO","PAS","DRI","DEF",
                 "PHY","HEIGHT","BS","IGS","TEAM","COUNTRY","LEAGUE")
@@ -119,6 +121,8 @@ for (n in 1:nrow(FUT)){
   }
   
 }  
+
+tail(FUT) #Showing tail of DF
 
 #Save the DF
 write.csv(FUT,"C://Users//xxx//FUT_20.csv",sep=";",row.names=FALSE)
