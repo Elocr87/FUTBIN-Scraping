@@ -1,16 +1,17 @@
 ##############################
-#  Code works - 29/11/2020   #
+#  Code works - 26/04/2021   #
 ##############################
 
-library(rvest) #scrapping
+library(rvest) #scraping
 library(stringr) #str_match_all
+library(xml2) #xml_children
 
 
 setwd("C:\\Users\\XXX\\Documents\\") #Set your working Directory
 
 FUT_2=data.frame() #create empty data frame
 
-pages=597 #Number of pages in https://www.futbin.com/21/players
+pages=147 #Number of pages in https://www.futbin.com/21/players
 
 for (n in 1:pages){ 
   
@@ -27,14 +28,31 @@ for (n in 1:pages){
   
   html2=html2[,-16]
   
-  html2[,15]=substr(html2[,15],1,3)
+  #Height, body type and weight
+  
+  body=strsplit(html2[,15],'                                                                              ')
+  
+  body_info=data.frame()
+  
+  for (j in 1:length(body)){
+    
+    height=substr(body[[j]][1],1,3)
+    
+    body_type=trimws(strsplit(body[[j]][2],'(',fixed = TRUE)[[1]][1])
+    weight=strsplit(body[[j]][2],'(',fixed = TRUE)[[1]][2]
+    weight=gsub('[^0-9\\.]','',weight)
+    
+    
+    body_info=rbind(body_info,cbind(height,body_type,weight))
+    
+  }
   
   #Split Work rates into attackint and Defending
   
   WR_AT=substr(html2[,8],1,1)
   WR_DEF=substr(html2[,8],5,5)
- 
-  html3=cbind(html2[,1:7],WR_AT,WR_DEF,html2[,9:17])
+  
+  html3=cbind(html2[,1:7],WR_AT,WR_DEF,html2[,9:14],body_info,html2[,16:17])
   
   FUT=rbind(FUT,html3)
   
@@ -104,8 +122,8 @@ FUT=FUT_2 #new D.F.
 rm(FUT_2) #Remove DF
 
 #Change colunms names
-colnames(FUT)=c("CARD", "RARE-NON" ,"Name","RAT","POS","VER","PRICE","SKILL","WF","WR_AT","WR_DEF","PAC","SHO","PAS","DRI","DEF",
-                "PHY","HEIGHT","BS","IGS","TEAM","COUNTRY","LEAGUE")
+colnames(FUT)=c("CARD", "RARE-NON" ,"NAME","RAT","POS","VER","PRICE","SKILL","WF","WR_AT","WR_DEF","PAC","SHO","PAS","DRI","DEF",
+                "PHY","HEIGHT","BODY_TYPE","WEIGHT","BS","IGS","TEAM","COUNTRY","LEAGUE")
 
 #Normalizing price into millions
 
