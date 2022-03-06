@@ -1,24 +1,27 @@
 ##############################
-#  Code works - 26/04/2021   #
+#  Code works - 2022-03-06   #
 ##############################
-
-library(rvest) #scraping
+library(rvest) #scrapping
 library(stringr) #str_match_all
 library(xml2) #xml_children
+library(glue) 
 
 
 setwd("C:\\Users\\XXX\\Documents\\") #Set your working Directory
 
 FUT_2=data.frame() #create empty data frame
+edition=22 #Year of the game: FIFA 19, FIFA 20, FIFA 21...
 
-pages=147 #Number of pages in https://www.futbin.com/21/players
+pages=9 #Number of pages you want to scrape in https://www.futbin.com/XX/players (XX: year)
+
+n=1
 
 for (n in 1:pages){ 
   
   FUT=data.frame() #create empty data frame
   league=data.frame() #create empty data frame
   
-  url=gsub("[[:space:]]","",paste("https://www.futbin.com/21/players?page=",n))
+  url=paste(glue("https://www.futbin.com/{edition}/players?page="),n, sep = "")
   
   html <- read_html(url)  
   
@@ -111,8 +114,8 @@ for (n in 1:pages){
   print("---------------------------------------------------------------------------------------------")
   print(tail(FUT_2))
   
-  #Delay the loop 10 seconds
-  Sys.sleep(10)
+  #Delay the loop 25 seconds
+  Sys.sleep(25)
   
 }
 
@@ -143,4 +146,4 @@ for (n in 1:nrow(FUT)){
 tail(FUT) #Showing tail of DF
 
 #Save the DF
-write.csv(FUT,"C://Users//xxx//FUT_20.csv",sep=";",row.names=FALSE)
+write.csv(FUT,"C://Users//xxx//FUT_21.csv",sep=";",row.names=FALSE)
